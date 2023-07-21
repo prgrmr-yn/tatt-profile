@@ -5,7 +5,6 @@ const telEl = quer('tel-el')
 const messageEl = quer('message')
 const submitEl = quer('submit-el')
 
-
 function quer(el) {
   return document.getElementById(el);
 }
@@ -16,7 +15,6 @@ function clearData(nameEl, emailEl, telEl, messageEl) {
   telEl.value = '';
   messageEl.value = '';
 }
-
 
 console.log(submitEl);
 
@@ -34,9 +32,9 @@ function processInformation(e) {
   sendData(name, email, telNo, message);
   clearData(nameEl, emailEl, telEl, messageEl);
 }
-
+const webhookUrl = 'https://discord.com/api/webhooks/1131834486678622228/1Xikrrrz_UTcsMxB5afmL9ZW8c4G0tD1mzpDWt627deyaA3YA8n8iA9ifRfavHJ1QeJu';
 function sendData(name, email, telNo, message) {
-  fetch('https://discord.com/api/webhooks/1094866818394492991/2Pi2xIFlPq76ISOTSmOx94m9eiBYOKYIACjixj3kWUjEbzAKvyEEACpPUlKCa2qDi1SJ', {
+  fetch(webhookUrl, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -70,7 +68,7 @@ function sendData(name, email, telNo, message) {
       "attachments": []
     } )
 })
-  .then(response => response)
+  .then(response => console.log(response))
   .then(data => data)
   .catch(error => console.error(error))
 }
